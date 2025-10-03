@@ -52,6 +52,6 @@ jobs:
 
       - name: Deploy Airflow Helm Chart
         run: |
-          helm upgrade --install airflow ./airflow-config \
+          helm upgrade --install airflow ./airflow-config/airflow \
             --namespace airflow \
-            --values ./airflow-config/values.yaml
+            --values ./airflow-config/airflow/values.yaml
