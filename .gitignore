@@ -1,0 +1,53 @@
+# Airflow logs
+logs/
+*/logs/
+**/logs/*
+
+# Airflow SQLite DB (local testing)
+airflow.db
+airflow.db-journal
+
+# Airflow config & PID files
+airflow.cfg
+webserver_config.py
+*.pid
+
+# Airflow dags folder (if dynamically generated)
+dags/__pycache__/
+dags/*.pyc
+dags/*~
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$.py.class
+
+# Virtualenv / venv
+.venv/
+venv/
+ENV/
+env/
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE configs
+.vscode/
+.idea/
+
+# Docker & Compose
+docker-compose.override.yml
+.airflow_env/
+
+# Helm / Kubernetes generated files
+charts/
+*.tgz
+values.override.yaml
+
+# Secrets
+*.env
+.env.*
