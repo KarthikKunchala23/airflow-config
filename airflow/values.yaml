@@ -2829,15 +2829,13 @@ cleanup:
 postgresql:
   enabled: true
   primary:
-    persistance:
+    persistence:
       # Enable persistent volumes
       enabled: true
       # Volume size for primary StatefulSet
       size: 8Gi
       # If using a custom storageClass, pass name ref to all statefulSets here
       storageClassName: airflow-sc
-      # Annotations to add to postgresql volumes
-      annotations: {}
 
   auth:
     enablePostgresUser: true
