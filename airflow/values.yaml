@@ -782,10 +782,10 @@ workers:
     #   whenScaled: Delete
 
     # Volume size for Airflow Celery worker StatefulSet
-    size: 100Gi
+    size: 20Gi
 
     # If using a custom storageClass, pass name ref to all StatefulSets here
-    storageClassName:
+    storageClassName: airflow-sc
 
     # Execute init container to chown log directory.
     # This is currently only needed in kind, due to usage
@@ -1845,9 +1845,9 @@ triggerer:
     # This policy determines whether PVCs should be deleted when StatefulSet is scaled down or removed.
     persistentVolumeClaimRetentionPolicy: ~
     # Volume size for triggerer StatefulSet
-    size: 100Gi
+    size: 10Gi
     # If using a custom storageClass, pass name ref to all statefulSets here
-    storageClassName:
+    storageClassName: airflow-sc
     # Execute init container to chown log directory.
     # This is currently only needed in kind, due to usage
     # of local-path provisioner.
@@ -2630,7 +2630,7 @@ redis:
     # Volume size for worker StatefulSet
     size: 1Gi
     # If using a custom storageClass, pass name ref to all statefulSets here
-    storageClassName:
+    storageClassName: airflow-sc
     # Annotations to add to redis volumes
     annotations: {}
     # the name of an existing PVC to use
@@ -2828,6 +2828,15 @@ cleanup:
 # Not recommended for production
 postgresql:
   enabled: true
+  primary:
+    persistence:
+      # Enable persistent volumes
+      enabled: true
+      # Volume size for primary StatefulSet
+      size: 8Gi
+      # If using a custom storageClass, pass name ref to all statefulSets here
+      storageClassName: airflow-sc
+
   auth:
     enablePostgresUser: true
     postgresPassword: postgres
@@ -2965,11 +2974,11 @@ dags:
     # Annotations for dags PVC
     annotations: {}
     # Enable persistent volume for storing dags
-    enabled: false
+    enabled: true
     # Volume size for dags
     size: 1Gi
     # If using a custom storageClass, pass name here
-    storageClassName:
+    storageClassName: airflow-sc
     # access mode of the persistent volume
     accessMode: ReadWriteOnce
     ## the name of an existing PVC to use
@@ -3098,13 +3107,13 @@ logs:
 
   persistence:
     # Enable persistent volume for storing logs
-    enabled: false
+    enabled: true
     # Volume size for logs
-    size: 100Gi
+    size: 10Gi
     # Annotations for the logs PVC
     annotations: {}
     # If using a custom storageClass, pass name here
-    storageClassName:
+    storageClassName: airflow-sc
     ## the name of an existing PVC to use
     existingClaim:
 

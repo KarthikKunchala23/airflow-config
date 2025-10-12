@@ -1,3 +1,5 @@
+# .github/workflows/airflow-helm-deploy.yaml
+# GitHub Actions workflow to deploy Apache Airflow using Helm on an EKS cluster
 name: Deploy Airflow Helm Chart
 
 on:
@@ -54,4 +56,4 @@ jobs:
         run: |
           helm upgrade --install airflow ./airflow \
             --namespace airflow \
-            --values ./airflow/values.yaml
+            --values ./airflow/values.yaml --debug
