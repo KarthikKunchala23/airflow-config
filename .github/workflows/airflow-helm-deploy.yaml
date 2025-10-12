@@ -56,4 +56,4 @@ jobs:
         run: |
           helm upgrade --install airflow ./airflow \
             --namespace airflow \
-            --values ./airflow/values.yaml
+            --values ./airflow/values.yaml --debug
