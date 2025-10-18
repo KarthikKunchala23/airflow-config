@@ -773,7 +773,7 @@ workers:
   # Persistence volume configuration for Airflow Celery workers
   persistence:
     # Enable persistent volumes
-    enabled: true
+    enabled: false
 
     # This policy determines whether PVCs should be deleted when StatefulSet is scaled down or removed
     persistentVolumeClaimRetentionPolicy: ~
@@ -1841,7 +1841,7 @@ triggerer:
 
   persistence:
     # Enable persistent volumes
-    enabled: true
+    enabled: false
     # This policy determines whether PVCs should be deleted when StatefulSet is scaled down or removed.
     persistentVolumeClaimRetentionPolicy: ~
     # Volume size for triggerer StatefulSet
@@ -2868,7 +2868,7 @@ config:
   logging:
     remote_logging: 'True'
     remote_log_conn_id: 'aws_default'
-    remote_base_log_folder: 's3://airflow-dag-logs-230798/dag_logs/'
+    remote_base_log_folder: 's3://yourorg-data-dev-airflow-logs/dag_logs/'
     # For Airflow 1.10, backward compatibility; moved from [core] in 2.0
     colored_console_log: 'False'
   metrics:
@@ -3109,7 +3109,7 @@ logs:
 
   persistence:
     # Enable persistent volume for storing logs
-    enabled: true
+    enabled: false
     # Volume size for logs
     size: 10Gi
     # Annotations for the logs PVC
