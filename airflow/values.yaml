@@ -2885,7 +2885,7 @@ config:
     rbac: 'True'
   celery:
     broker_url: redis://:@airflow-redis:6379/0
-    result_backend: db+postgresql://airflow:airflow@airflow-postgresql:5432/airflow
+    result_backend: db+postgresql://airflow:Rock%23123K4U@platform-org-dev-airflow-db.c41ka4qya7i2.us-east-1.rds.amazonaws.com:5432/airflow
     worker_log_server_port: 8793
     worker_log_server_host: '{{ include "airflow.fullname" . }}-webserver'
     # Only used by CeleryKubernetesExecutor
