@@ -525,13 +525,13 @@ data:
 
   # Otherwise pass connection values in
   metadataConnection:
-    user: postgres
-    pass: postgres
+    user: airflow
+    pass: ChangeMe123!
     protocol: postgresql
-    host: ~
+    host: platform-org-dev-airflow-db.c41ka4qya7i2.us-east-1.rds.amazonaws.com
     port: 5432
-    db: postgres
-    sslmode: disable
+    db: airflow
+    sslmode: require
     # Add custom annotations to the metadata connection secret
     secretAnnotations: {}
   # resultBackendConnection defaults to the same database as metadataConnection
@@ -2827,7 +2827,7 @@ cleanup:
 # Configuration for postgresql subchart
 # Not recommended for production
 postgresql:
-  enabled: true
+  enabled: false
   image:
     repository: docker.io/bitnami/postgresql
     digest: sha256:330f43ebf900e5527dad503e2964c718f3fd913b85f12267221f02fab99a2e2d
