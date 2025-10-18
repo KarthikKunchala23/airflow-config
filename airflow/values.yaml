@@ -525,13 +525,13 @@ data:
 
   # Otherwise pass connection values in
   metadataConnection:
-    user: postgres
-    pass: postgres
+    user: airflow
+    pass: Rock#123K4U
     protocol: postgresql
-    host: ~
+    host: platform-org-dev-airflow-db.c41ka4qya7i2.us-east-1.rds.amazonaws.com
     port: 5432
-    db: postgres
-    sslmode: disable
+    db: airflow
+    sslmode: require
     # Add custom annotations to the metadata connection secret
     secretAnnotations: {}
   # resultBackendConnection defaults to the same database as metadataConnection
@@ -773,7 +773,7 @@ workers:
   # Persistence volume configuration for Airflow Celery workers
   persistence:
     # Enable persistent volumes
-    enabled: true
+    enabled: false
 
     # This policy determines whether PVCs should be deleted when StatefulSet is scaled down or removed
     persistentVolumeClaimRetentionPolicy: ~
@@ -1841,7 +1841,7 @@ triggerer:
 
   persistence:
     # Enable persistent volumes
-    enabled: true
+    enabled: false
     # This policy determines whether PVCs should be deleted when StatefulSet is scaled down or removed.
     persistentVolumeClaimRetentionPolicy: ~
     # Volume size for triggerer StatefulSet
@@ -2827,7 +2827,10 @@ cleanup:
 # Configuration for postgresql subchart
 # Not recommended for production
 postgresql:
-  enabled: true
+  enabled: false
+  image:
+    repository: docker.io/bitnami/postgresql
+    digest: sha256:330f43ebf900e5527dad503e2964c718f3fd913b85f12267221f02fab99a2e2d
   primary:
     persistence:
       # Enable persistent volumes
@@ -2836,7 +2839,6 @@ postgresql:
       size: 8Gi
       # If using a custom storageClass, pass name ref to all statefulSets here
       storageClassName: airflow-sc
-
   auth:
     enablePostgresUser: true
     postgresPassword: postgres
@@ -2866,7 +2868,7 @@ config:
   logging:
     remote_logging: 'True'
     remote_log_conn_id: 'aws_default'
-    remote_base_log_folder: 's3://airflow-dag-logs-230798/dag_logs/'
+    remote_base_log_folder: 's3://yourorg-data-dev-airflow-logs/dag_logs/'
     # For Airflow 1.10, backward compatibility; moved from [core] in 2.0
     colored_console_log: 'False'
   metrics:
@@ -2883,7 +2885,7 @@ config:
     rbac: 'True'
   celery:
     broker_url: redis://:@airflow-redis:6379/0
-    result_backend: db+postgresql://airflow:airflow@airflow-postgresql:5432/airflow
+    result_backend: db+postgresql://airflow:Rock#23123K4U@platform-org-dev-airflow-db.c41ka4qya7i2.us-east-1.rds.amazonaws.com:5432/airflow
     worker_log_server_port: 8793
     worker_log_server_host: '{{ include "airflow.fullname" . }}-webserver'
     # Only used by CeleryKubernetesExecutor
