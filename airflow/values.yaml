@@ -526,7 +526,7 @@ data:
   # Otherwise pass connection values in
   metadataConnection:
     user: airflow
-    pass: ChangeMe123!
+    pass: Rock#123K4U
     protocol: postgresql
     host: platform-org-dev-airflow-db.c41ka4qya7i2.us-east-1.rds.amazonaws.com
     port: 5432
