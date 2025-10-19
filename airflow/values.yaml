@@ -926,7 +926,7 @@ workers:
   # Log groomer configuration for Airflow Celery workers
   logGroomerSidecar:
     # Whether to deploy the Airflow Celery worker log groomer sidecar
-    enabled: true
+    enabled: false
 
     # Command to use when running the Airflow Celery worker log groomer sidecar (templated)
     command: ~
@@ -1141,7 +1141,7 @@ scheduler:
 
   logGroomerSidecar:
     # Whether to deploy the Airflow scheduler log groomer sidecar.
-    enabled: true
+    enabled: false
     # Command to use when running the Airflow scheduler log groomer sidecar (templated).
     command: ~
     # Args to use when running the Airflow scheduler log groomer sidecar (templated).
@@ -1926,7 +1926,7 @@ triggerer:
 
   logGroomerSidecar:
     # Whether to deploy the Airflow triggerer log groomer sidecar.
-    enabled: true
+    enabled: false
     # Command to use when running the Airflow triggerer log groomer sidecar (templated).
     command: ~
     # Args to use when running the Airflow triggerer log groomer sidecar (templated).
@@ -2114,7 +2114,7 @@ dagProcessor:
 
   logGroomerSidecar:
     # Whether to deploy the Airflow dag processor log groomer sidecar.
-    enabled: true
+    enabled: false
     # Command to use when running the Airflow dag processor log groomer sidecar (templated).
     command: ~
     # Args to use when running the Airflow dag processor log groomer sidecar (templated).
@@ -3103,9 +3103,9 @@ dags:
 
 logs:
   # Configuration for empty dir volume (if logs.persistence.enabled == false)
-  # emptyDirConfig:
-  #   sizeLimit: 1Gi
-  #   medium: Memory
+  emptyDirConfig:
+    sizeLimit: 1Gi
+    medium: Memory
 
   persistence:
     # Enable persistent volume for storing logs
